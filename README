@@ -1,1 +1,13 @@
 Here is my configure of vim
+
+,t 打开关闭左边栏目
+
+,qq 退出
+
+i 以分屏形式打开一个新的项目
+
+Ctrol + HJKL 在不同的项目之间转换
+
+o 打开一个新的项目，关闭现在的项目
+
+ctags
