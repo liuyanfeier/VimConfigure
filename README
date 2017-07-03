@@ -1,5 +1,10 @@
 Here is my configure of vim
 
+mv ~/.vim .vim1
+mv ~/.vimrc .vimrc1
+mv .vim ~
+mv .vimrc ~
+
 ,t 打开关闭左边栏目
 
 ,qq 退出
