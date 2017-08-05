@@ -43,6 +43,8 @@ Bundle 'SuperTab-continued.'
 "Bundle 'auctex.vim'
 Bundle "LaTeX-Suite-aka-Vim-LaTeX"
 
+"Plugin 'Valloric/YouCompleteMe'
+
 "filetype plugin indent on     " required! 
 let NERDTreeDirArrows=0
 " vundle end
