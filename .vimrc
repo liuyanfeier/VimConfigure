@@ -173,6 +173,86 @@ noremap <leader>m :TMiniBufExplorer<CR>
 " 	return 1
 " endfunction
 
+" share system clipboard    
+if has('clipboard')
+        if has('unnamedplus')  " When possible use + register for copy-paste
+            set clipboard=unnamed,unnamedplus
+        else         " On mac and Windows, use * register for copy-paste
+            set clipboard=unnamed
+        endif
+endif
+
+" 用y来复制到公共粘贴版,p来粘贴
+
+" 打开自动定位到最后编辑的位置, 需要确认 .viminfo 当前用户可写
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" 关闭方向键, 强迫自己用 hjkl
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+
+" 其次, 当一行超长之后, 一行就显示为多行(一个物理行 - 多个展示行), 如果是默认配置, 
+" 使用 jk 移动时, 将会是物理行维度的, 而直觉上应该在展示行维度跳转(视觉上), 所以加配置, 使得jk在展示行之间上下跳转
+
+" Treat long lines as break lines (useful when moving around in them)
+" se swap之后，同物理行上线直接跳
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
+set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
+                                                "    paste mode, where you can paste mass data
+                                                "    that won't be autoindented
+
+" disbale paste mode when leaving insert mode
+au InsertLeave * set nopaste
+
+" w 移到下一个单词 (记忆 next word)
+" b 移动到单词开头 (记忆 back)
+" e 移动到单词尾部
+
+" 0 移动到行首
+" $ 移动到行尾
+
+" ctrl + u 上翻半页(记忆 up)
+" ctrl + d 下翻半页(记忆 down)
+
+" 将H映射成移动到行首(最左边), 将L映射成移动到行尾(最右边)
+
+" Go to home and end using capitalized directions
+noremap H ^      
+" shift+h
+noremap L $
+
+set t_ti= t_te=     " 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 如果不需要可以关掉
+
+
+" shell和python文件新建时, 自动插入行头
+" 定义函数AutoSetFileHead，自动插入文件头
+autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+function! AutoSetFileHead()
+    "如果文件类型为.sh文件
+    if &filetype == 'sh'
+        call setline(1, "\#!/bin/bash")
+    endif
+
+    "如果文件类型为python
+    if &filetype == 'python'
+        call setline(1, "\#!/usr/bin/env python")
+        call append(1, "\# encoding: utf-8")
+    endif
+
+    normal G
+    normal o
+    normal o
+endfunc
+
+
 " For ctags
 set tags+=~/.vim/tagfiles/stl_tags
 map <F12> :!ctags -R --exclude=="*/.svn" --sort=yes --c++-kinds=+p --fields=+ialS --extra=+q .<CR> <CR>
@@ -259,9 +339,9 @@ map <F4> :call TitleDet()<cr>'s
 function AddTitle()
 	    call append(0,"/*=============================================================================")
 	    call append(1,"#")
-	    call append(2,"# Author: Jianpeng Li")
+	    call append(2,"# Author: Yan Liu")
 	    call append(3,"#")
-	    call append(4,"# E-Mail: limoonbird@gmail.com")
+	    call append(4,"# E-Mail: liuyanfeier@gmail.com")
 	    call append(5,"#")
 	    call append(6,"# Create on: ".strftime("%Y-%m-%d %H:%M"))
 	    call append(7,"#")
@@ -269,14 +349,8 @@ function AddTitle()
 	    call append(9,"#")
 	    call append(10,"# Filename: ".expand("%:t"))
 	    call append(11,"#")
-		call append(12,"# For the brave souls who get this far: You are the chosen ones,")
-		call append(13,"# the valiant knights of programming who toil away, without rest,")
-		call append(14,"# fixing our most awful code. To you, true saviors, kings of men,")
-		call append(15,"# I say this: never gonna give you up, never gonna let you down,")
-		call append(16,"# never gonna run around and desert you. Never gonna make you cry,")
-		call append(17,"# never gonna say goodbye. Never gonna tell a lie and hurt you.")
-		call append(18,"=============================================================================*/")
-		echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
+	    call append(18,"=============================================================================*/")
+	    echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
 endf 
 "更新最近修改时间和文件名
 function UpdateTitle()
