@@ -83,6 +83,9 @@ set pastetoggle=<F5>
 " disbale paste mode when leaving insert mode
 au InsertLeave * set nopaste
 
+" vim --version | grep clipboard
+" sudo apt-get install vim vim-scripts vim-gtk vim-gnome
+" brew install vim
 " share system clipboard 
 if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
