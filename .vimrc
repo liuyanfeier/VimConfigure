@@ -1,3 +1,4 @@
+" vundle begin
 set nocompatible " be iMproved
 filetype off  "required!
 set ts=4
@@ -62,6 +63,37 @@ endif
 "设置编码
 set encoding=utf-8
 set fileencodings=utf-8
+
+" 打开自动定位到最后编辑的位置, 需要确认 .viminfo 当前用户可写
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" 将H映射成移动到行首, 将L映射成移动到行尾
+noremap H ^
+noremap L $
+
+" 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 如果不需要可以关掉
+" set t_ti= t_te=     
+
+" when in insert mode, press <F5> to go to paste mode
+" where you can paste mass data that won't be autoindented
+set pastetoggle=<F5>    
+
+" disbale paste mode when leaving insert mode
+au InsertLeave * set nopaste
+
+" 关闭方向键, 强迫自己用 hjkl
+" map <Left> <Nop>
+" map <Right> <Nop>
+" map <Up> <Nop>
+" map <Down> <Nop>
+
+" w 移到下一个单词 (记忆 next word)
+" b 移动到单词开头 (记忆 back)
+" e 移动到单词尾部
+" ctrl + u 上翻半页(记忆 up)
+" ctrl + d 下翻半页(记忆 down)
 
 " colorscheme desert
 colorscheme molokai
