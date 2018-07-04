@@ -49,8 +49,14 @@ set shiftwidth=4
 set cursorline   " cursor line
 
 " hi cursorline ctermbg=darkred ctermfg=white
-set mouse=nv     " enable mouse action in normal/visual mode
+set mouse=a      " enable mouse action in normal/visual/insert mode
 set hidden       " allow buffer switch without save
+
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 
 " 语法高亮
 syntax enable
