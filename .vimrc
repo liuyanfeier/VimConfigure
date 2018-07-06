@@ -263,7 +263,7 @@ let g:miniBufExplMapWindowNavVim = 1
 filetype on
 
 "指定文件类型
-au BufRead,BufNewFile *.py set filetype=py
+"au BufRead,BufNewFile *.py set filetype=py
 
 "新建文件并自动插入文件头
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.java exec ":call SetTitle()"
