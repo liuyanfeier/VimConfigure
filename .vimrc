@@ -58,6 +58,11 @@ else
     set ttymouse=xterm2
 end
 
+" 解决鼠标粘贴问题
+if has("mouse") 
+    set mouse-=a 
+endif
+
 " 语法高亮
 syntax enable
 syntax on
