@@ -59,9 +59,9 @@ else
 end
 
 " 解决鼠标粘贴问题
-if has("mouse") 
-    set mouse-=a 
-endif
+" if has("mouse") 
+"     set mouse-=a 
+" endif
 
 " 语法高亮
 syntax enable
