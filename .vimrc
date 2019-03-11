@@ -119,7 +119,8 @@ endif
 " ctrl + d 下翻半页(记忆 down)
 
 " colorscheme desert
-colorscheme molokai
+" colorscheme molokai
+colorscheme solarized
 
 " Font for GUI
 if has('gui_running')
