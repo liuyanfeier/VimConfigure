@@ -120,6 +120,7 @@ endif
 
 " colorscheme desert
 " colorscheme molokai
+set background=dark
 colorscheme solarized
 
 " Font for GUI
