@@ -47,6 +47,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set cursorline   " cursor line
+set cursorcolumn
 
 " hi cursorline ctermbg=darkred ctermfg=white
 set mouse=a      " enable mouse action in normal/visual/insert mode
